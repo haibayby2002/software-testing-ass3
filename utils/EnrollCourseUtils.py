@@ -27,19 +27,14 @@ class EnrollCourseUtils(Utils):
 
         cls.driver.find_element(By.ID, "enrolusersbutton-1").click()   #Button
 
-
-        # cls.driver.find_element(By.XPATH, '''//input[@type='text']''')
         cls.driver.implicitly_wait(5)
 
+        # Search textbok
         search = cls.driver.find_element(By.XPATH, '//div[@class="d-md-inline-block mr-md-2 position-relative"]/input')
 
-        # Toi day ok
-
-        # //div[@class="d-md-inline-block mr-md-2 position-relative"]/input
-
-        # el = driver.findElement(By.xpath("//div[@id = 'colLeft_OrderGroups']/descendant::li[text() = '" + text + "']"))
         print(search)
         for mail in list_mail:
+            # Search user by email
             search.clear()
             search.send_keys(mail)
             first_result = cls.driver.find_element(By.XPATH,
@@ -47,7 +42,7 @@ class EnrollCourseUtils(Utils):
             )
             first_result.click()
             time.sleep(5)
-        # Enter
+        # Click enter
         btnSubmit = cls.driver.find_element(By.XPATH, "//button[text()='Enrol users']")
         btnSubmit.click()
         
@@ -57,16 +52,10 @@ class EnrollCourseUtils(Utils):
         count = len(list_mail)
         for i in enrolls_mails:
             email = i.text
-            print(email)
+            # print(email)
             if email in list_mail:
                 count=count-1
         return count==0
-
-        # //div[@class=toast-wrapper
-       
-        
-
-        return True
 
     @classmethod
     def textFieldHandler(cls, value, fieldId):

@@ -22,6 +22,13 @@ docker logs moodle
 3. The website is available at `http://localhost`, log in with username `user` and password `bitnami`
 
 4. Run tests
+
 ```sh
-pytest UploadFileTest.py
+pytest CreateUserTest.py
 ```
+to create sample user
+
+```sh
+pytest EnrollCourseTest.py
+```
+to enroll user to class
